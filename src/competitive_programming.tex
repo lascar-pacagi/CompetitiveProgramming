@@ -17647,7 +17647,7 @@ permutations, and choosing the cheapest one. Therefore, its complexity is $O(n!)
 \item<2-> Let $d_{c_ic_j}$ be the distance between city $c_i$ and $c_j$.
 \vspace{0.05cm}
 \item<3-> $L(c, \{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\})$: The cheapest path length from city $c$ to city $0$ using all and only
-cities from $\{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$, with $c \not\in \{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$.
+cities from $\{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$, with $c \in \{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$.
 \end{itemize}
 
 \vspace{0.1cm}
@@ -17655,7 +17655,7 @@ cities from $\{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$, with $c \not\in \{c_{i_1}, 
 \item<4-> Relate subproblems solutions.
 \begin{itemize}
 \footnotesize
-\item<4-> $L(c, \mathcal{S}) = \min_{c' \in \mathcal{S}} (d_{cc'} + L(c', S \setminus \{c'\}))$.
+\item<4-> $L(c, \mathcal{S}) = \min_{c' \in \mathcal{S}} (d_{cc'} + L(c', S \setminus \{c\}))$.
 \end{itemize}
 
 \vspace{0.1cm}
@@ -17663,12 +17663,12 @@ cities from $\{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$, with $c \not\in \{c_{i_1}, 
 \item<5-> Solve base case.
 \begin{itemize}
 \footnotesize
-\item<5-> $L(c, \emptyset) = d_{c0}$.
+\item<5-> $L(0, \{0\}) = 0$.
 \end{itemize}
 
 \vspace{0.1cm}
 
-\item<6-> Solve original problem: $L(0, \{1, 2, \ldots, (n - 1)\})$.
+\item<6-> Solve original problem: $\min_{c \in \{0, 1, 2, \ldots, (n - 1)\}} \left(L(c, \{0, 1, 2, \ldots, (n - 1)\}) + d_{c0}\right)$.
 
 \vspace{0.1cm}
 
@@ -17681,10 +17681,10 @@ cities from $\{c_{i_1}, c_{i_2}, \ldots, c_{i_k}\}$, with $c \not\in \{c_{i_1}, 
 \frametitle{TSP Dynamic Programming Solution}
 
 \begin{center}
-\includegraphics[width=9cm]<1>{tsp6.pdf}
-\includegraphics[width=9cm]<2>{tsp7.pdf}
-\includegraphics[width=9cm]<3>{tsp8.pdf}
-\includegraphics[width=9cm]<4>{tsp9.pdf}
+\includegraphics[width=9cm]<1>{tsp8.pdf}
+\includegraphics[width=9cm]<2>{tsp9.pdf}
+\includegraphics[width=9cm]<3>{tsp6.pdf}
+\includegraphics[width=9cm]<4>{tsp7.pdf}
 \end{center}
 
 \end{frame}
